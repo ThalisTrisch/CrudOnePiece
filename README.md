@@ -9,3 +9,8 @@ instalar dependências:
 rodar os arquivos .js que estão na pasta "comandosSQL" para criar a database e as tabelas:
 - node criardatabase.js
 - node criartabelas.js
+
+ativar o banco de dados mysql
+
+ir na raiz do projeto e rodar o servidor: 
+- node jsprincipal.js
