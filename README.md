@@ -4,7 +4,7 @@ Passo a passo:
 
 instalar dependências:
 - no diretório raiz do projeto instale as dependências através do comando:
-- npm install mysql express express-session bcrypt crypto fs path bodyparser formidable
+- npm install mysql express express-session bcrypt crypto fs path body-Parser formidable
 
 rodar os arquivos .js que estão na pasta "comandosSQL" para criar a database e as tabelas:
 - node criardatabase.js
