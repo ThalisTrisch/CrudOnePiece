@@ -15,6 +15,12 @@ const { resourceLimits } = require("worker_threads");
 
 var port = 100;
 //conexão mysql
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "onepiece"
+}); 
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use( express.static("public") );
@@ -33,13 +39,6 @@ app.get('/cadastrar', function(req, res){
 
 
 app.post('/cadastrar/inserir', function(req, res){
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "onepiece"
-    }); 
-
     var nome = req.body['nome'];
     var bando = req.body['bando'];
     var senha = req.body['senha'];
@@ -54,7 +53,7 @@ app.post('/cadastrar/inserir', function(req, res){
         });
     });
     */
-    var sql = "select bando from tripulacao where bando = '"+bando+"'";
+    var sql = `select bando from tripulacao where bando = '${bando}'`;
 
     con.connect(function(err) {
         con.query(sql, function (err, result) {
@@ -89,13 +88,6 @@ app.post('/desconectar', function(req, res){
 });
 
 app.post('/inicial', function(req, res){
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "onepiece"
-    });
-
     const nome = req.body['nome'];
     const senha = req.body['senha'];
     var sql = "select * from tripulacao where capitao = '"+nome+"'";
@@ -113,7 +105,7 @@ app.post('/inicial', function(req, res){
         if(nome != "" || nome != null || nome != undefined){
             con.connect(function(err) {
                 con.query(sql, function (err, result) {
-                    if(result.length){
+                    if(result[0] != undefined){
                         bcrypt.compare(senha, result[0]['senha'], function(err, comparacao){
                             if(err) throw err;
                             if(comparacao){
@@ -137,13 +129,6 @@ app.post('/inicial', function(req, res){
 });
 
 app.post('/inicial/pesquisar', function(req, res){
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "onepiece"
-    });
-
     const pesquisar = req.body['pesquisar'];
     var sql = "select * from tripulacao where capitao like '%"+pesquisar+"%' or bando like '%"+pesquisar+"%'";
     con.connect(function(err) {
@@ -178,14 +163,6 @@ app.get('/inicial', function(req, res){
 
 app.post('/inicial/:remover', function(req, res){
     const parametro = req.params['remover'];
-
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "onepiece"
-    });
-
     var sql ="delete from tripulacao where id = "+parametro;
     con.query(sql, function (err, result, fields) {
         if (err) throw err;
@@ -200,13 +177,6 @@ app.post('/inicial/:remover', function(req, res){
 });
 
 app.post('/editar', function(req, res){
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "onepiece"
-    });
-
     const capitao = req.body['capitao'];
     const novocapitao = req.body['novocapitao'];
     const novobando = req.body['novobando'];
