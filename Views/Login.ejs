@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('head'); %>
+</head>
+<body>
+    <div class="topbar container-fluid shadow-lg p-4 mb-5">
+        <center>
+            <img src="https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABdPChfCEFiD521b1XCoFfvQlx9F1no-tUHM5SFJ0s9bFxk1GyIkjeZSM60x-CfbcNTPr0TeSnSWt44udge1B-KKTlo8tXsMGcGhW.png?r=74a" alt="logo one piece" class="logoprincipal">
+        </center>
+    </div>
+    <div class="caixa container">
+        <img class="procurado" src="https://i.pinimg.com/originals/c4/07/22/c4072211a2234abd490414fd701a7efb.png" alt="">
+        <form action="/cadastrar" method="get">
+            <button class="botao btn btn-outline-dark"><strong>Cadastrar</strong></button>
+        </form>
+    </div>
+    <div class="vidro">
+        <br>
+        <div class="fomulario row"> 
+            <div class="col-10">
+                <form action="/inicial" method="POST" class="form">
+                    <center><strong><h3 class="text-white">Login</h3></strong></center>
+                    <div class="grupoinput form-group">
+                        <label for="nome" class="label">Nome do capitão:</label>
+                        <input class="campo1 form-control text-white" id="campo" type="text" name="nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="senha" class="label">Senha:</label>
+                        <input class="campo2 form-control text-white" id="camposenha" type="password" name="senha">
+                    </div>
+                    <center><button class="button btn btn-outline-light" type="submit">Entrar</button></center>
+                </form>
+            </div>
+            <div class="col-1">
+                <img id="olho" class="olhofechado" src="https://cdn-icons-png.flaticon.com/512/94/94674.png" alt="" onclick="exibir()">
+            </div>
+        </div>
+    </div>
+    <div></div>
+</body>
+<script>
+    var cont = 0;
+    function exibir(){
+        if(cont%2==0){
+            document.getElementById("olho").src = "https://cdn-icons-png.flaticon.com/512/65/65000.png";
+            document.getElementById("camposenha").type = "text";
+            document.getElementById("olho").className = "olhoaberto";
+            cont = cont+1;
+        }else{
+            document.getElementById("olho").src = "https://cdn-icons-png.flaticon.com/512/94/94674.png";
+            document.getElementById("camposenha").type = "password";
+            document.getElementById("olho").className = "olhofechado";
+            cont = cont+1;
+        }
+    }
+</script>
+</html>

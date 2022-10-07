@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('head'); %>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="">
+            <form action="/cadastrar">
+                <button class="btn btn-success">
+                    Cadastrar
+                </button>
+            </form> 
+        </div>
+        <div class="">
+            <div class="titulo container">
+                <center>
+                    <h2 class="textotitulo text-white">Listagem das contas cadastradas</h2>
+                </center>
+            </div>
+        </div>
+        <div class=""> 
+            <div class="alinharbotoes">
+                <form action="/desconectar" method="POST">
+                    <button class="desconectar btn btn-primary">
+                        Desconectar
+                    </button>
+                </form>
+                <form action="/">
+                    <button class="voltar btn btn-light mt-1">
+                        Voltar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <div class="pesquisa mt-3">
+        <form action="/inicial/pesquisar" method="POST">
+            <div class="btn-group btn-group-l">
+                <input type="text" name="pesquisar" class="pesquisar">
+                <button type="submit" class="filtro btn btn-dark"><i class="bi bi-search"></i></button>
+            </div>
+        </form>
+    </div>
+        <div class="tela container-fluid mt-3">
+            <table  class="tabela table table-hover table-striped text-white">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <td>Capitão</td>
+                        <td>Tripulação</td>
+                        <td>Imagem</td>
+                        <td>Editar/Apagar</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%dadosbanco.forEach(function(dados){ %>
+                        <tr>
+                            <td class="text-white"><%= dados.capitao %></td>
+                            <td class="text-white"><%= dados.bando %></td>
+                            <td class="text-white">Sem imagem</td>
+                            <td>
+                                <form action="/editar/<%= dados.capitao %>" method="POST">
+                                    <button type="submit" class="editar btn btn-outline-light">
+                                        <span class="icone material-icons" class="icone">
+                                            construction
+                                        </span>
+                                    </button>   
+                                </form>    
+                                <form action="/inicial/<%= dados.id %>" method="POST">
+                                    <button type="submit" class="remover btn btn-outline-danger">
+                                        <span class="icone material-icons" class="icone">
+                                            delete_outline
+                                        </span>
+                                    </button>   
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('head'); %>
+    <style>
+        body{
+            background-image: url(https://i0.wp.com/static.zerochan.net/ONE.PIECE.full.1544771.jpg);
+            background-size:cover;
+            background-repeat:no-repeat;
+            background-position-y: 10%;
+        }.botaoesquerdo{
+            float: right;
+        }.vidraca{
+            margin-top: 5%;
+            margin-right: 8%;
+            border-radius: 40px;
+            width: 600px;
+            height: 500px;
+            background-color: rgba(178, 147, 201, 0.178);
+            background: rgba(255, 255, 255, 0.26);
+            box-shadow: 0 8px 32px 0 rgba(13, 14, 34, 0.486);
+            backdrop-filter: blur( 4.5px );
+            -webkit-backdrop-filter: blur( 13.5px );
+            border: 2px solid rgba(255, 255, 255, 0.116);
+            color: black;
+        }.tituloeditar{
+            margin-top: 20px;
+        }.formedit{
+            width: 75%;
+            margin-left: 20%;
+        }.nomecapitao{
+            background-color: rgba(15, 57, 85, 0.596);
+            width: min-content;
+            border: 0px;
+            text-transform:capitalize;
+            text-align: center;
+            width: 160px;
+            border-radius: 20px;
+            margin-left: 20px;
+        }.mensagem{
+            float: left;
+            margin-left: 50px;
+            margin-top: 5%;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <div class="container">
+        <form action="/inicial" method="GET">
+            <button class="botaoesquerdo btn btn-dark">
+                Voltar
+            </button>
+        </form>
+    </div>
+    <div class="mensagem">
+        <button class="btn btn-danger"><%= mensagem %></button>
+    </div>
+    <div class="vidraca container-fluid">
+        <center>
+            <h2 class="tituloeditar">
+                Editar Cadastro
+            </h2>
+            <br>
+        </center>
+            <form action="/editar" method="POST">
+                <center>
+                    <p>Você está editando o cadastro do capitão: <strong><input class="nomecapitao" name="capitao" type="text" value="<%= capitao %>"></strong>
+                </center>
+                <hr>
+                <div class="formedit">
+                    <div class="form-group">
+                        <label for="nome">Novo nome do capitão:</label>
+                        <input class="form-control"type="text" name="novocapitao" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Novo nome da Tripulação:</label>
+                        <input class="form-control" type="text" name="novobando" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Nova senha</label>
+                        <input class="form-control" type="password" name="novasenha" required>
+                    </div>
+                </div>
+                <center>
+                    <button type="submit" class="btn btn-dark">Enviar</button>
+                </center>
+            </form>
+    </div>
+</body>
+</html>

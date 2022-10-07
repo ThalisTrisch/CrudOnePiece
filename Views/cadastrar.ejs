@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang ="pt-br">
+<head>
+    <%- include('head'); %>
+    <style>
+        body{
+            background-image: url(https://wallpaper.dog/large/17169612.png);
+            background-size:cover;
+            background-repeat:no-repeat;
+            color: white;
+        }.campos{
+            width: 50%;
+            background-color: rgba(127, 255, 212, 0.205);
+        }.file{
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <div class="container">
+        <form action="/" method="GET">
+            <button class="btn btn-dark">
+                Voltar
+            </button>
+        </form>
+        <br><br>
+        <h1>Formulário de cadastro</h1>
+        <br>
+        <form action="/cadastrar/inserir" method="POST">
+            <div class="form-group">
+                <label for="nome">Nome do capitão:</label>
+                <input type="text" class="campos form-control" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="bando">Nome da tripulação:</label>
+                <input type="text" class="campos form-control" name="bando" required>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Senha:</label>
+                <input type="password" class="campos form-control" name="senha" required>
+            </div>
+            <input type="file" name="imagem">
+            <br>
+            <button type="submit" class="btn btn-outline-light mt-4">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
